@@ -1,9 +1,10 @@
 # Raju Property Dealer - Local Property Dealer Application
 
 ## Overview
-Raju Property Dealer is a full-stack property dealer application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties.
+Raju Property Dealer is a full-stack property dealer application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties. The application includes a CMS admin panel for managing property listings.
 
 ## Recent Changes
+- **January 28, 2026**: Added PostgreSQL database persistence and admin panel for property management
 - **January 28, 2026**: Initial MVP implementation with property listings, search/filter, inquiry forms, and add property functionality
 
 ## Project Architecture
@@ -11,6 +12,7 @@ Raju Property Dealer is a full-stack property dealer application designed for lo
 ### Technology Stack
 - **Frontend**: React + TypeScript + Vite
 - **Backend**: Express.js
+- **Database**: PostgreSQL with Drizzle ORM
 - **Styling**: Tailwind CSS with custom design tokens
 - **State Management**: TanStack React Query
 - **Routing**: Wouter
@@ -21,15 +23,17 @@ Raju Property Dealer is a full-stack property dealer application designed for lo
 ├── client/                 # Frontend React application
 │   ├── src/
 │   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Page components (home, about, contact)
+│   │   ├── pages/         # Page components (home, about, contact, admin)
 │   │   ├── hooks/         # Custom React hooks
 │   │   ├── lib/           # Utility functions
 │   │   └── index.css      # Global styles and design tokens
 ├── server/                 # Backend Express server
 │   ├── routes.ts          # API route handlers
-│   └── storage.ts         # In-memory data storage
+│   ├── storage.ts         # Database storage implementation
+│   ├── db.ts              # Database connection
+│   └── seed.ts            # Sample data seeding script
 ├── shared/                 # Shared code between frontend and backend
-│   └── schema.ts          # Data types and validation schemas
+│   └── schema.ts          # Drizzle schema and validation
 ```
 
 ### Key Features
@@ -38,7 +42,9 @@ Raju Property Dealer is a full-stack property dealer application designed for lo
 3. **Property Details**: View full property information in a modal
 4. **Inquiry System**: Send inquiries to property dealers
 5. **Add Property**: List new properties with complete details
-6. **Dark Mode**: Toggle between light and dark themes
+6. **Admin Panel**: Manage properties (add, edit, delete) and view inquiries
+7. **Dark Mode**: Toggle between light and dark themes
+8. **Persistent Storage**: PostgreSQL database for data persistence
 
 ### API Endpoints
 - `GET /api/properties` - List all properties
@@ -47,10 +53,12 @@ Raju Property Dealer is a full-stack property dealer application designed for lo
 - `PATCH /api/properties/:id` - Update property
 - `DELETE /api/properties/:id` - Delete property
 - `POST /api/inquiries` - Submit property inquiry
+- `GET /api/inquiries` - List all inquiries (admin)
 
-### Data Models
-- **Property**: id, title, description, price, type, status, location, area, bedrooms, bathrooms, imageUrl, features, isFeatured, contactPhone, contactName
-- **Inquiry**: id, propertyId, name, email, phone, message
+### Database Schema
+- **properties**: id, title, description, price, type, status, location, area, bedrooms, bathrooms, image_url, features, is_featured, contact_phone, contact_name
+- **inquiries**: id, property_id, name, email, phone, message
+- **users**: id, username, password
 
 ### Design Tokens
 The app uses a warm, professional color scheme with:
@@ -62,10 +70,15 @@ The app uses a warm, professional color scheme with:
 ### Running the Application
 The application runs via the `Start application` workflow which executes `npm run dev`. The server runs on port 5000.
 
+### Database Commands
+- `npm run db:push` - Push schema changes to database
+- `npx tsx server/seed.ts` - Seed sample data
+
 ## User Preferences
 - No specific user preferences recorded yet
 
 ## Notes
-- In-memory storage is used for MVP (data resets on server restart)
-- Sample properties are pre-loaded for demonstration
+- PostgreSQL database stores all property and inquiry data persistently
+- Sample properties are seeded on first run
 - All forms use proper validation with Zod schemas
+- Admin panel accessible at /admin for property management
