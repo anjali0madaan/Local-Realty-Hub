@@ -1,7 +1,8 @@
-import { Building2, Plus, Phone, Settings } from "lucide-react";
+import { Plus, Phone, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Link, useLocation } from "wouter";
+import logoImage from "@/assets/logo.png";
 
 interface HeaderProps {
   onAddProperty: () => void;
@@ -15,9 +16,7 @@ export function Header({ onAddProperty }: HeaderProps) {
       <div className="container mx-auto flex h-16 items-center justify-between gap-4 px-4">
         <Link href="/" data-testid="link-home">
           <div className="flex items-center gap-2 cursor-pointer">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <Building2 className="h-5 w-5" />
-            </div>
+            <img src={logoImage} alt="Raju Property Dealer" className="h-9 w-9 rounded-md object-cover" />
             <span className="font-serif text-xl font-bold tracking-tight">Raju Property Dealer</span>
           </div>
         </Link>
