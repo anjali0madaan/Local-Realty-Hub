@@ -45,17 +45,17 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 98765 43210", "+91 98765 43211"],
+      details: ["+91 92558 19786"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@propertyhub.com", "support@propertyhub.com"],
+      details: ["rajupropertydealer@gmail.com"],
     },
     {
       icon: MapPin,
       title: "Office Address",
-      details: ["123 Main Street, Sector 15", "Gurugram, Haryana 122001"],
+      details: ["New Janakpuri, Gali No. 1"],
     },
     {
       icon: Clock,

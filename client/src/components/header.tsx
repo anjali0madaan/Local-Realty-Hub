@@ -69,6 +69,7 @@ export function Header({ onAddProperty }: HeaderProps) {
           <Button
             size="sm"
             className="hidden sm:flex gap-2"
+            onClick={() => window.location.href = "tel:9255819786"}
             data-testid="button-call-now"
           >
             <Phone className="h-4 w-4" />

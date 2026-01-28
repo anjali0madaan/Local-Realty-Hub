@@ -76,15 +76,15 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 92558 19786</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span>info@propertyhub.com</span>
+                <span>rajupropertydealer@gmail.com</span>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5" />
-                <span>123 Main Street, Sector 15,<br />Gurugram, Haryana 122001</span>
+                <span>New Janakpuri, Gali No. 1</span>
               </li>
             </ul>
           </div>
