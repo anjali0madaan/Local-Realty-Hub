@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import Admin from "@/pages/admin";
 import NotFound from "@/pages/not-found";
 
 function Router({ showAddDialog, onShowAddDialogChange }: { showAddDialog: boolean; onShowAddDialogChange: (show: boolean) => void }) {
@@ -20,6 +21,7 @@ function Router({ showAddDialog, onShowAddDialogChange }: { showAddDialog: boole
       </Route>
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/admin" component={Admin} />
       <Route component={NotFound} />
     </Switch>
   );

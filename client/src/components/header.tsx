@@ -1,4 +1,4 @@
-import { Building2, Plus, Phone } from "lucide-react";
+import { Building2, Plus, Phone, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Link, useLocation } from "wouter";
@@ -51,6 +51,17 @@ export function Header({ onAddProperty }: HeaderProps) {
               data-testid="link-nav-contact"
             >
               Contact
+            </span>
+          </Link>
+          <Link href="/admin">
+            <span 
+              className={`text-sm font-medium transition-colors cursor-pointer flex items-center gap-1 ${
+                location === "/admin" ? "text-primary" : "text-muted-foreground hover:text-foreground"
+              }`}
+              data-testid="link-nav-admin"
+            >
+              <Settings className="h-4 w-4" />
+              Manage
             </span>
           </Link>
         </nav>

@@ -105,5 +105,15 @@ export async function registerRoutes(
     }
   });
 
+  // Get all inquiries (for admin)
+  app.get("/api/inquiries", async (req, res) => {
+    try {
+      const inquiries = await storage.getAllInquiries();
+      res.json(inquiries);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch inquiries" });
+    }
+  });
+
   return httpServer;
 }
