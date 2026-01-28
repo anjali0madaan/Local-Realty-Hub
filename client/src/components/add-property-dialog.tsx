@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { insertPropertySchema, type InsertProperty } from "@shared/schema";
+import type { InsertProperty } from "@shared/schema";
 import { z } from "zod";
 
 interface AddPropertyDialogProps {
@@ -17,12 +17,27 @@ interface AddPropertyDialogProps {
   isSubmitting: boolean;
 }
 
-const formSchema = insertPropertySchema.extend({
-  features: z.string().transform((val) => val.split(",").map((s) => s.trim()).filter(Boolean)),
+const formSchema = z.object({
+  title: z.string().min(3, "Title must be at least 3 characters"),
+  description: z.string().min(10, "Description must be at least 10 characters"),
+  price: z.number().min(1, "Price must be greater than 0"),
+  type: z.enum(["residential", "commercial", "land", "apartment"]),
+  status: z.enum(["sale", "rent"]),
+  location: z.string().min(3, "Location is required"),
+  area: z.number().min(1, "Area must be greater than 0"),
+  bedrooms: z.number().optional(),
+  bathrooms: z.number().optional(),
+  imageUrl: z.string().url("Must be a valid URL"),
+  features: z.string(),
+  isFeatured: z.boolean().optional(),
+  contactPhone: z.string().min(10, "Phone number is required"),
+  contactName: z.string().min(2, "Contact name is required"),
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 export function AddPropertyDialog({ open, onOpenChange, onSubmit, isSubmitting }: AddPropertyDialogProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
@@ -42,8 +57,12 @@ export function AddPropertyDialog({ open, onOpenChange, onSubmit, isSubmitting }
     },
   });
 
-  const handleSubmit = (data: z.infer<typeof formSchema>) => {
-    onSubmit(data as InsertProperty);
+  const handleSubmit = (data: FormData) => {
+    const propertyData: InsertProperty = {
+      ...data,
+      features: data.features.split(",").map((s) => s.trim()).filter(Boolean),
+    };
+    onSubmit(propertyData);
     form.reset();
   };
 
