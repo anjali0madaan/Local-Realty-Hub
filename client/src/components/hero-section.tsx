@@ -23,7 +23,7 @@ export function HeroSection({ onSearch }: HeroSectionProps) {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
             <MapPin className="h-4 w-4" />
-            Your Trusted Local Property Dealer
+            Raju Property Dealer - Your Trusted Local Expert
           </div>
           
           <h1 className="mb-6 font-serif text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">

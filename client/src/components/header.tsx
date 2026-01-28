@@ -18,7 +18,7 @@ export function Header({ onAddProperty }: HeaderProps) {
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <Building2 className="h-5 w-5" />
             </div>
-            <span className="font-serif text-xl font-bold tracking-tight">PropertyHub</span>
+            <span className="font-serif text-xl font-bold tracking-tight">Raju Property Dealer</span>
           </div>
         </Link>
 

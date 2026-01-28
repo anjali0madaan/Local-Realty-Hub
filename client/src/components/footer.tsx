@@ -11,10 +11,10 @@ export function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
                 <Building2 className="h-5 w-5" />
               </div>
-              <span className="font-serif text-xl font-bold">PropertyHub</span>
+              <span className="font-serif text-xl font-bold">Raju Property Dealer</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Your trusted local property dealer. We help you find your dream home with ease and confidence.
+              Your trusted local property expert. We help you find your dream home with ease and confidence.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} PropertyHub. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Raju Property Dealer. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
-# PropertyHub - Local Property Dealer Application
+# Raju Property Dealer - Local Property Dealer Application
 
 ## Overview
-PropertyHub is a full-stack property dealer application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties.
+Raju Property Dealer is a full-stack property dealer application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties.
 
 ## Recent Changes
 - **January 28, 2026**: Initial MVP implementation with property listings, search/filter, inquiry forms, and add property functionality

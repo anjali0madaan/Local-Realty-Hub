@@ -13,7 +13,7 @@ export default function About() {
     <div className="min-h-screen">
       <section className="bg-gradient-to-br from-primary/10 via-accent/20 to-background py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-serif text-4xl font-bold mb-4">About PropertyHub</h1>
+          <h1 className="font-serif text-4xl font-bold mb-4">About Raju Property Dealer</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Your trusted partner in finding the perfect property. We've been helping families
             find their dream homes for over 15 years.
@@ -39,7 +39,7 @@ export default function About() {
             <h2 className="font-serif text-2xl font-bold mb-4">Our Story</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                PropertyHub was founded with a simple mission: to make property buying and selling
+                Raju Property Dealer was founded with a simple mission: to make property buying and selling
                 a transparent, hassle-free experience for everyone in our community.
               </p>
               <p>
