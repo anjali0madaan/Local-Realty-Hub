@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Plus, Pencil, Trash2, Home, Building2, MapPin, IndianRupee, Bed, Bath, Square, Phone, User, Star, Loader2, MessageSquare, Mail } from "lucide-react";
+import { Plus, Pencil, Trash2, Home, Building2, MapPin, IndianRupee, Bed, Bath, Square, Phone, User, Star, Loader2, MessageSquare, Mail, Upload, Image } from "lucide-react";
 import type { Property, Inquiry } from "@shared/schema";
 
 function formatPrice(price: number, status: string): string {
@@ -64,6 +64,40 @@ export default function Admin() {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showInquiriesDialog, setShowInquiriesDialog] = useState(false);
   const [formData, setFormData] = useState<PropertyFormData>(emptyFormData);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast({ title: "Error", description: "Please select an image file", variant: "destructive" });
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const formDataUpload = new FormData();
+      formDataUpload.append("image", file);
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formDataUpload,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to upload image");
+      }
+
+      const data = await response.json();
+      setFormData((prev) => ({ ...prev, imageUrl: data.url }));
+      toast({ title: "Success", description: "Image uploaded successfully" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to upload image", variant: "destructive" });
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   const { data: properties = [], isLoading } = useQuery<Property[]>({
     queryKey: ["/api/properties"],
@@ -412,14 +446,48 @@ export default function Admin() {
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="imageUrl">Image URL</Label>
-              <Input
-                id="imageUrl"
-                value={formData.imageUrl}
-                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                placeholder="https://example.com/image.jpg"
-                data-testid="input-imageUrl"
-              />
+              <Label>Property Image</Label>
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-2">
+                  <Input
+                    id="imageUrl"
+                    value={formData.imageUrl}
+                    onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                    placeholder="https://example.com/image.jpg or upload below"
+                    className="flex-1"
+                    data-testid="input-imageUrl"
+                  />
+                  <label className="cursor-pointer">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleImageUpload}
+                      disabled={isUploading}
+                      data-testid="input-file-upload"
+                    />
+                    <Button type="button" variant="outline" disabled={isUploading} asChild>
+                      <span>
+                        {isUploading ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <Upload className="h-4 w-4" />
+                        )}
+                        <span className="ml-2">{isUploading ? "Uploading..." : "Upload"}</span>
+                      </span>
+                    </Button>
+                  </label>
+                </div>
+                {formData.imageUrl && (
+                  <div className="relative w-full h-32 rounded-md overflow-hidden border">
+                    <img
+                      src={formData.imageUrl}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="grid gap-2">

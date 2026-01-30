@@ -4,6 +4,31 @@ import { storage } from "./storage";
 import { insertPropertySchema, insertInquirySchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { v2 as cloudinary } from "cloudinary";
+import multer from "multer";
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// Configure multer for memory storage with file size and type validation
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB max
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedMimes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    if (allowedMimes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed."));
+    }
+  },
+});
 
 export async function registerRoutes(
   httpServer: Server,
@@ -112,6 +137,48 @@ export async function registerRoutes(
       res.json(inquiries);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch inquiries" });
+    }
+  });
+
+  // Upload image to Cloudinary
+  app.post("/api/upload", (req, res, next) => {
+    upload.single("image")(req, res, (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === "LIMIT_FILE_SIZE") {
+            return res.status(400).json({ message: "File too large. Maximum size is 5MB." });
+          }
+          return res.status(400).json({ message: err.message });
+        }
+        return res.status(400).json({ message: err.message });
+      }
+      next();
+    });
+  }, async (req, res) => {
+    try {
+      // Check if Cloudinary is configured
+      if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+        return res.status(500).json({ message: "Image upload service not configured" });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ message: "No image file provided" });
+      }
+
+      // Convert buffer to base64
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      const dataURI = `data:${req.file.mimetype};base64,${b64}`;
+
+      // Upload to Cloudinary
+      const result = await cloudinary.uploader.upload(dataURI, {
+        folder: "raju-property-dealer",
+        resource_type: "image",
+      });
+
+      res.json({ url: result.secure_url });
+    } catch (error) {
+      console.error("Cloudinary upload error:", error);
+      res.status(500).json({ message: "Failed to upload image" });
     }
   });
 
