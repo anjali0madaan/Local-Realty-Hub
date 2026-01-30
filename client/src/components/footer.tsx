@@ -92,6 +92,7 @@ export function Footer() {
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Raju Property Dealer. All rights reserved.</p>
+          <p className="mt-2">Developed by Anjali Software Services</p>
         </div>
       </div>
     </footer>
