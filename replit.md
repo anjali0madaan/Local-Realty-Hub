@@ -4,6 +4,9 @@
 Raju Property Dealer is a full-stack property dealer application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties. The application includes a CMS admin panel for managing property listings.
 
 ## Recent Changes
+- **January 30, 2026**: Added Vercel serverless API functions for deployment compatibility
+- **January 30, 2026**: Fixed database connection to use individual PG* environment variables
+- **January 30, 2026**: Integrated Cloudinary for image uploads in admin panel
 - **January 28, 2026**: Added PostgreSQL database persistence and admin panel for property management
 - **January 28, 2026**: Initial MVP implementation with property listings, search/filter, inquiry forms, and add property functionality
 
@@ -20,6 +23,12 @@ Raju Property Dealer is a full-stack property dealer application designed for lo
 
 ### Directory Structure
 ```
+├── api/                    # Vercel serverless API functions
+│   ├── _db.ts             # Database connection for Vercel
+│   ├── properties.ts      # GET/POST properties endpoint
+│   ├── properties/[id].ts # GET/PATCH/DELETE single property
+│   ├── inquiries.ts       # GET/POST inquiries endpoint
+│   └── upload.ts          # Image upload to Cloudinary
 ├── client/                 # Frontend React application
 │   ├── src/
 │   │   ├── components/    # Reusable UI components
@@ -27,7 +36,7 @@ Raju Property Dealer is a full-stack property dealer application designed for lo
 │   │   ├── hooks/         # Custom React hooks
 │   │   ├── lib/           # Utility functions
 │   │   └── index.css      # Global styles and design tokens
-├── server/                 # Backend Express server
+├── server/                 # Backend Express server (for local development)
 │   ├── routes.ts          # API route handlers
 │   ├── storage.ts         # Database storage implementation
 │   ├── db.ts              # Database connection
