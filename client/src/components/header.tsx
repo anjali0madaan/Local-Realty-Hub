@@ -16,8 +16,8 @@ export function Header({ onAddProperty }: HeaderProps) {
       <div className="container mx-auto flex h-16 items-center justify-between gap-4 px-4">
         <Link href="/" data-testid="link-home">
           <div className="flex items-center gap-2 cursor-pointer">
-            <img src={logoImage} alt="Raju Property Dealer" className="h-9 w-9 rounded-md object-cover" />
-            <span className="font-serif text-xl font-bold tracking-tight">Raju Property Dealer</span>
+            <img src={logoImage} alt="Raju Property Advisor" className="h-9 w-9 rounded-md object-cover" />
+            <span className="font-serif text-xl font-bold tracking-tight">Raju Property Advisor</span>
           </div>
         </Link>
 

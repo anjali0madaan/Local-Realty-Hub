@@ -55,7 +55,7 @@ const emptyFormData: PropertyFormData = {
   features: "",
   isFeatured: false,
   contactPhone: "+91 92558 19786",
-  contactName: "Raju Property Dealer",
+  contactName: "Raju Property Advisor",
 };
 
 export default function Admin() {

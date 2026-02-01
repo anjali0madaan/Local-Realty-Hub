@@ -16,7 +16,7 @@ const sampleProperties = [
     features: ["Modular Kitchen", "24/7 Security", "Parking", "Power Backup", "Gym"],
     isFeatured: true,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Luxury Villa with Private Garden",
@@ -32,7 +32,7 @@ const sampleProperties = [
     features: ["Swimming Pool", "Private Garden", "Smart Home", "Italian Marble", "Modular Kitchen", "Servant Quarters"],
     isFeatured: true,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Modern 2BHK Flat for Rent",
@@ -48,7 +48,7 @@ const sampleProperties = [
     features: ["Semi-Furnished", "AC", "Covered Parking", "Near Metro", "Gated Society"],
     isFeatured: false,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Commercial Space in IT Hub",
@@ -62,7 +62,7 @@ const sampleProperties = [
     features: ["Central AC", "Power Backup", "High-Speed Elevator", "Cafeteria", "Conference Rooms"],
     isFeatured: true,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Residential Plot in Developing Area",
@@ -76,7 +76,7 @@ const sampleProperties = [
     features: ["Clear Title", "Approved Layout", "Corner Plot", "Wide Road", "Near School"],
     isFeatured: false,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Cozy 1BHK Studio Apartment",
@@ -92,7 +92,7 @@ const sampleProperties = [
     features: ["Furnished", "Metro Nearby", "Market Area", "24/7 Water", "Security"],
     isFeatured: false,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Premium Showroom Space",
@@ -106,7 +106,7 @@ const sampleProperties = [
     features: ["Glass Frontage", "High Visibility", "Power Backup", "Parking", "Loading Dock"],
     isFeatured: false,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Farm House with Orchard",
@@ -122,7 +122,7 @@ const sampleProperties = [
     features: ["Orchard", "Tube Well", "Boundary Wall", "Cottage", "Garden", "Farm Road Access"],
     isFeatured: true,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   },
   {
     title: "Ready to Move 4BHK Penthouse",
@@ -138,7 +138,7 @@ const sampleProperties = [
     features: ["Private Terrace", "Jacuzzi", "Home Theater", "City View", "Premium Interiors", "Dedicated Lift"],
     isFeatured: true,
     contactPhone: "+91 92558 19786",
-    contactName: "Raju Property Dealer"
+    contactName: "Raju Property Advisor"
   }
 ];
 

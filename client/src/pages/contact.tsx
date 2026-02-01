@@ -50,7 +50,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      details: ["rajupropertydealer@gmail.com"],
+      details: ["rajupropertyadvisor@gmail.com"],
     },
     {
       icon: MapPin,

@@ -11,7 +11,7 @@ export function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
                 <Building2 className="h-5 w-5" />
               </div>
-              <span className="font-serif text-xl font-bold">Raju Property Dealer</span>
+              <span className="font-serif text-xl font-bold">Raju Property Advisor</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               Your trusted local property expert. We help you find your dream home with ease and confidence.
@@ -80,7 +80,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span>rajupropertydealer@gmail.com</span>
+                <span>rajupropertyadvisor@gmail.com</span>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5" />
@@ -91,7 +91,7 @@ export function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Raju Property Dealer. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Raju Property Advisor. All rights reserved.</p>
           <p className="mt-2">Developed by Anjali Software Services</p>
         </div>
       </div>

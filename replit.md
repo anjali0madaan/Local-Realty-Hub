@@ -1,7 +1,7 @@
-# Raju Property Dealer - Local Property Dealer Application
+# Raju Property Advisor - Local Property Advisor Application
 
 ## Overview
-Raju Property Dealer is a full-stack property dealer application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties. The application includes a CMS admin panel for managing property listings.
+Raju Property Advisor is a full-stack property advisor application designed for local real estate businesses. It provides an easy-to-use, attractive interface for listing, searching, and inquiring about properties. The application includes a CMS admin panel for managing property listings.
 
 ## Recent Changes
 - **January 30, 2026**: Added Vercel serverless API functions for deployment compatibility
